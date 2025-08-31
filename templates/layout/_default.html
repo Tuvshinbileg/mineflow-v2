@@ -1,0 +1,13 @@
+{% extends '_base.html'%} {% block layout%}
+
+<div class="flex flex-col w-full">
+  {% include "layout/_header/header.html" %}
+  <div class="flex">
+    {% include "layout/_sidebar/shadcn_sidebar.html" %}
+    <main class="gap-5 flex-col ml-10 mt-10 flex-1">
+      {%block content%} {%endblock%}
+    </main>
+  </div>
+</div>
+
+{%endblock%}

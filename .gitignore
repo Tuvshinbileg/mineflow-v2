@@ -1,0 +1,53 @@
+# -----------------
+# Python / Django
+# -----------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+.env
+*.log
+
+# Django Migrations (optional, if you don’t want to commit them)
+# ** Be careful: usually migrations SHOULD be tracked **
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# VSCode / PyCharm settings
+.vscode/
+.idea/
+
+# -----------------
+# Node / Next.js
+# -----------------
+node_modules/
+.next/
+out/
+dist/
+.npm/
+.yarn/
+.pnp.*
+*.log
+
+# Environment
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Next.js build artifacts
+.next/
+out/
+
+# -----------------
+# OS / Misc
+# -----------------
+.DS_Store
+Thumbs.db

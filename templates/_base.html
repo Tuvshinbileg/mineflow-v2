@@ -1,0 +1,14 @@
+{% load compress %} {% load static %}
+<!DOCTYPE html>
+<html>
+  <!-- Tailwind CSS output file -->
+  <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+
+  <!-- Alpine.js tag - directly from CDN (not recommended for production) -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <body class="flex h-screen">
+    {% block layout%} {% endblock layout%} 
+    {% block javascript %} {% endblock javascript %}
+
+  </body>
+</html>
