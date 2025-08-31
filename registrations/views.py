@@ -7,8 +7,8 @@ from registrations.forms import ConcentratorOreFactoryForm
 from registrations.models import ConcentratorOreFactory
 
 # Create your views here.
-class OreFactoryFormView(SingleObjectMixin, FormView):
-    template_name = "pages/ore-factory/detail.html"
+class OreFactoryFormView(FormView):
+    template_name = "pages/ore-factory/form.html"
     form_class =ConcentratorOreFactoryForm 
     model = ConcentratorOreFactory
 

@@ -3,6 +3,6 @@ from registrations.views import OreFactoryFormView
 app_name = 'registrations'
 
 urlpatterns = [
-    path('ore-factory/create', OreFactoryFormView.as_view, name="createOreFactory"),
-    path('ore-factory/<int:pk>', OreFactoryFormView.as_view, name="detailOreFactory")
+    path('ore-factory/create', OreFactoryFormView.as_view(), name="createOreFactory"),
+    path('ore-factory/<int:pk>', OreFactoryFormView.as_view(), name="detailOreFactory")
 ]
