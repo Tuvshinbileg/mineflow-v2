@@ -5,7 +5,7 @@
       <c-card.title>Үйлдвэр тэжээсэн хүдэр</c-card.title>
     </c-card.header>
     <c-card.content>
-      <form class="space-y-4" >
+      <form class="space-y-4" method="post">
         {% csrf_token %}
         {% for field in form %}
             {% if not field.is_hidden %}
@@ -26,7 +26,13 @@
               </c-form.field>
             {% endif %}
         {% endfor %}
-        <c-button type="submit">Save</c-button>
+        <c-button type="submit">
+            {% if form.instance %}
+                Edit
+                {% else  %}
+                Save
+            {% endif %}
+        </c-button>
     </c-card.content>
   </c-card>
 </div>

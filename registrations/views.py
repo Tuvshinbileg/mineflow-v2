@@ -11,7 +11,7 @@ from django.contrib import messages
 
 class OreFactoryListView(ListView):
     model = ConcentratorOreFactory
-    template_name = "pages/index.html"
+    template_name = "pages/ore-factory/list.html"
     
     def get_queryset(self):
         return super().get_queryset().all()
