@@ -17,7 +17,7 @@
         <c-card.content>
   <c-table>
     <c-table.caption>
-        A list of your recent invoices.
+        Үйлдвэр тэжээсэн хүдрийн жагсаалт.
     </c-table.caption>
     <c-table.header>
         <c-table.row>
@@ -26,31 +26,32 @@
             <c-table.head>auto pu</c-table.head>
             <c-table.head class='text-right'>off to dump ore</c-table.head>
             <c-table.head class='text-right'>reamaining field</c-table.head>
-            <c-table.head class='text-right'>ore moistre</c-table.head>
+            <c-table.head class='text-right'>ore moisture</c-table.head>
+            <c-table.head class='text-right'>action</c-table.head>
         </c-table.row>
     </c-table.header>
       <c-table.body>
         {%for el in data%}
           <c-table.row>
               <c-table.cell class='font-medium'>{{el.block_number}}</c-table.cell>
-              <c-table.cell>{{el.block_number}}</c-table.cell>
               <c-table.cell>{{el.mixed_ratio}}</c-table.cell>
               <c-table.cell class='text-right'>{{el.auto_pu_total_ore}}</c-table.cell>
-              <c-table.cell class='text-right'>{{el.field_remaining}}</c-table.cell>
+              <c-table.cell class='text-right'>{{el.off_to_dump_ore}}</c-table.cell>
               <c-table.cell class='text-right'>{{el.ore_moisture}}</c-table.cell>
+              <c-table.cell class='text-right'>{{el.field_remaining}}</c-table.cell>
               <c-table.cell class='text-right'>
-                <div className="flex items-center gap-1">
+                <div class="flex justify-end gap-1 ">
                   <c-button variant="ghost"  aria-label="View">
-                    <span className="sr-only">View</span>
+                    <span >View</span>
                   </c-button>
             
-                  <c-button variant="ghost" aria-label="Edit">
-                    <span className="sr-only">Edit</span>
-                  </c-button>
+                  <c-alink variant="ghost" aria-label="Edit" href="{% url 'registrations:editOreFactory' pk=el.pk %}">
+                    <span>Edit</span>
+                  </c-alink>
             
-                  <c-button variant="ghost" aria-label="Delete">
-                    <span className="sr-only">Delete</span>
-                  </c-button>
+                  <c-alink variant="ghost" aria-label="Delete" href="{% url 'registrations:deleteOreFactory' pk=el.pk %}">
+                    <span>Delete</span>
+                  </c-alink>
               </c-table.cell>
           </c-table.row>
         {%endfor%}
@@ -58,26 +59,8 @@
     </c-table>
 
 
-    <c-alink href="{% url "registrations:createOreFactory" %}">Add row</c-alink>
-
-        </c-card.content>
+    <c-alink href="{% url "registrations:createOreFactory" %}">Add row</c-alink></c-card.content>
       </c-card>
-
-      <c-dialog>
-        <c-dialog.trigger>Open Dialog</c-dialog.trigger>
-        <c-dialog.content>
-          <c-dialog.header>
-            <c-dialog.title>Are you absolutely sure?</c-dialog.title>
-            <c-dialog.description>
-              This action is permanent and cannot be undone.
-            </c-dialog.description>
-          </c-dialog.header>
-          <div class="flex justify-end gap-2 pt-4">
-            <c-button variant="outline" @click="hideDialog">Cancel</c-button>
-            <c-button variant="default">Submit</c-button>
-          </div>
-        </c-dialog.content>
-      </c-dialog>
   </div>
 </section>
 {%endblock%}

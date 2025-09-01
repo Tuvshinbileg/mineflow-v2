@@ -5,24 +5,28 @@
       <c-card.title>Үйлдвэр тэжээсэн хүдэр</c-card.title>
     </c-card.header>
     <c-card.content>
-      <form class="space-y-4">
-        <c-form.field>
-          <c-form.label for="email">Email</c-form.label>
-          <c-input id="email" type="email" placeholder="Email"></c-input>
-          <c-form.description> This will be your username. </c-form.description>
-        </c-form.field>
-
-        <c-form.field>
-          <c-form.label for="password">Password</c-form.label>
-          <c-input
-            id="password"
-            placeholder="Password"
-          ></c-input>
-        </c-form.field>
-        <div class="flex justify-end">
-          <c-button type="submit">Save</c-button>
-        </div>
-      </form>
+      <form class="space-y-4" >
+        {% csrf_token %}
+        {% for field in form %}
+            {% if not field.is_hidden %}
+              <c-form.field class="mb-3">
+                <c-form.label for="{{ field.id_for_label }}">{{ field.label }}</c-form.label>
+                {% if field.value %}
+                <c-input id="{{ field.id_for_label}}" name="{{ field.name }}"
+                        value="{{ field.value }}"
+                />
+                    {% else %}
+                <c-input id="{{ field.id_for_label}}" name="{{ field.name }}"/>
+            {% endif %}
+                {% if field.errors %}
+                  <c-form.error>
+                    {{ field.errors }}
+                  </c-form.error>
+                  {%endif%}
+              </c-form.field>
+            {% endif %}
+        {% endfor %}
+        <c-button type="submit">Save</c-button>
     </c-card.content>
   </c-card>
 </div>

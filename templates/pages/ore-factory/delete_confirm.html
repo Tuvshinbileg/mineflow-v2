@@ -1,0 +1,25 @@
+{% extends "layout/_default.html" %} {%block content%}
+<div class="mt-20">
+  <c-dialog default_open="true">
+    <c-dialog.content>
+      <c-dialog.header>
+        <c-dialog.title>Are you absolutely sure?</c-dialog.title>
+        <c-dialog.description>
+          This action is permanent and cannot be undone.
+        </c-dialog.description>
+      </c-dialog.header>
+    <form method="post">
+        {% csrf_token %}
+      <div class="flex justify-end gap-2 pt-4">
+        <c-alink variant="outline" href="{% url 'registrations:listOreFactory' %}">Cancel</c-alink>
+        <c-button variant="default" type="submit">Submit</c-button>
+      </div>
+    </form>
+    </c-dialog.content>
+  </c-dialog>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+</script>
+{% endblock %}

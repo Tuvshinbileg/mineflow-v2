@@ -17,7 +17,6 @@ from mineflow import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -44,10 +43,14 @@ INSTALLED_APPS = [
 
     'django_cotton',
     'compressor',  # new
+    'widget_tweaks',
+    ## my apps
     'base',
     'mineflow',
     'mining_user',
     'registrations',
+    
+    ##end of my apps
 ]
 
 MIDDLEWARE = [
