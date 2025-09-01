@@ -19,17 +19,3 @@ def index(request):
 
 
 
-class OreFactoryFormView(SingleObjectMixin, FormView):
-    template_name = "pages/ore-factory/detail.html"
-    form_class =ConcentratorOreFactoryForm 
-    model = ConcentratorOreFactory
-
-    def post(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return HttpResponseForbidden()
-        self.object = self.get_object()
-        return super().post(request, *args, **kwargs)
-
-    def get_success_url(self):
-        data = ConcentratorOreFactory.objects.all()
-        return reverse("index", kwargs={"pk": self.object.pk, "data": data})
