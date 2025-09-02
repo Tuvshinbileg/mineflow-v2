@@ -1,15 +1,18 @@
-{% extends '_base.html'%} {% block layout%}
+{% extends '_base.html' %} {% block layout %}
 
-<div class="flex flex-col w-full">
-  <div class="flex" x-data="{ isOpen: false, isCollapsed: false }">
-    {% include "layout/_sidebar/shadcn_sidebar.html" %}
-    <main class="bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2">
-      {% include "layout/_header/header.html" %}
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-        {%block content%} {%endblock%}
-      </div>
-    </main>
-  </div>
-</div>
+    <div class="bg-background w-full" x-data="{ isOpen: false, isCollapsed: false }">
+        <div class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full">
+            {% include "layout/_sidebar/shadcn_sidebar.html" %}
+            <main data-slot="sidebar-inset"
+                  class="bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2 text-card-foreground border"
+            >
+                {% include 'layout/_header/header.html' %}
+                <div class="flex flex-1 flex-col gap-4 p-4 pt-0"
 
-{%endblock%}
+                >
+                    {% block content %} {% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
