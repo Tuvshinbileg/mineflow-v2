@@ -39,17 +39,15 @@
                                     <c-table.cell class='text-right'>{{ el.ore_moisture }}</c-table.cell>
                                     <c-table.cell class='text-right'>{{ el.field_remaining }}</c-table.cell>
                                     <c-table.cell class='text-right'>
-                                        <div class="flex justify-end gap-1 ">
-                                            <c-button variant="ghost" aria-label="View">
-                                                <span>View</span>
-                                            </c-button>
-
+                                        <div class="flex justify-end gap-1">
                                             <c-alink variant="ghost" aria-label="Edit"
+                                                     class="text-sm"
                                                      href="{% url 'registrations:editOreFactory' pk=el.pk %}">
                                                 <span>Edit</span>
                                             </c-alink>
 
                                             <c-alink variant="ghost" aria-label="Delete"
+                                                     class="text-sm"
                                                      href="{% url 'registrations:deleteOreFactory' pk=el.pk %}">
                                                 <span>Delete</span>
                                             </c-alink>
