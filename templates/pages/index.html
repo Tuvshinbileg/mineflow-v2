@@ -1,6 +1,6 @@
 {% extends "layout/_default.html" %} {%block content%}
 <section class="flex flex-col">
-  <div class="p-6">
+  <div class="p-6 pt-2">
     <div class="mx-auto">
       <!-- Page Header -->
       <div class="mb-8">
@@ -15,7 +15,7 @@
           <c-card.description>Crud table</c-card.description>
         </c-card.header>
         <c-card.content>
-  <c-table>
+  <c-table class="mb-10">
     <c-table.caption>
         Үйлдвэр тэжээсэн хүдрийн жагсаалт.
     </c-table.caption>
@@ -58,8 +58,8 @@
       </c-table.body>
     </c-table>
 
-
-    <c-alink href="{% url "registrations:createOreFactory" %}">Add row</c-alink></c-card.content>
+    <c-alink class="mt-5"
+             href="{% url "registrations:createOreFactory" %}">Add row</c-alink></c-card.content>
       </c-card>
   </div>
 </section>

@@ -1,39 +1,39 @@
-{% extends "layout/_default.html" %} {%block content%}
-<div class="mt-10 flex justify-center align-items-center">
-  <c-card class="w-[50%] mt-20">
-    <c-card.header>
-      <c-card.title>Үйлдвэр тэжээсэн хүдэр</c-card.title>
-    </c-card.header>
-    <c-card.content>
-      <form class="space-y-4" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            {% if not field.is_hidden %}
-              <c-form.field class="mb-3">
-                <c-form.label for="{{ field.id_for_label }}">{{ field.label }}</c-form.label>
-                {% if field.value %}
-                <c-input id="{{ field.id_for_label}}" name="{{ field.name }}"
-                        value="{{ field.value }}"
-                />
-                    {% else %}
-                <c-input id="{{ field.id_for_label}}" name="{{ field.name }}"/>
-            {% endif %}
-                {% if field.errors %}
-                  <c-form.error>
-                    {{ field.errors }}
-                  </c-form.error>
-                  {%endif%}
-              </c-form.field>
-            {% endif %}
-        {% endfor %}
-        <c-button type="submit">
-            {% if form.instance %}
-                Edit
-                {% else  %}
-                Save
-            {% endif %}
-        </c-button>
-    </c-card.content>
-  </c-card>
-</div>
-{%endblock%}
+{% extends "layout/_default.html" %} {% block content %}
+    <div class="mt-10 flex justify-center align-items-center">
+        <c-card class="w-[50%] mt-20">
+            <c-card.header>
+                <c-card.title>Үйлдвэр тэжээсэн хүдэр</c-card.title>
+            </c-card.header>
+            <c-card.content>
+                <form class="space-y-4" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% if not field.is_hidden %}
+                            <c-form.field class="mb-3">
+                                <c-form.label for="{{ field.id_for_label }}">{{ field.label }}</c-form.label>
+                                {% if field.value %}
+                                    <c-input id="{{ field.id_for_label }}" name="{{ field.name }}"
+                                             value="{{ field.value }}"
+                                    />
+                                {% else %}
+                                    <c-input id="{{ field.id_for_label }}" name="{{ field.name }}"/>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <c-form.error>
+                                        {{ field.errors }}
+                                    </c-form.error>
+                                {% endif %}
+                            </c-form.field>
+                        {% endif %}
+                    {% endfor %}
+                    <c-button type="submit">
+                        {% if form.instance.pk %}
+                            Edit
+                        {% else %}
+                            Save
+                        {% endif %}
+                    </c-button>
+            </c-card.content>
+        </c-card>
+    </div>
+{% endblock %}
