@@ -1,68 +1,67 @@
-{% extends "layout/_default.html" %} {%block content%}
-<section class="flex gap-y-5 flex-col container mx-auto">
-  <div class="p-6">
-    <div class=" mx-auto mt-10">
-      <!-- Page Header -->
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-foreground">Dashboard Overview</h1>
-        <p class="text-muted-foreground mt-2">
-          Welcome back! Here's what's happening with your projects today.
-        </p>
-      </div>
-      <c-card class="w-full">
-        <c-card.header>
-          <c-card.title>Ore factory registration</c-card.title>
-          <c-card.description>Crud table</c-card.description>
-        </c-card.header>
-        <c-card.content>
-  <c-table>
-    <c-table.caption>
-        Үйлдвэр тэжээсэн хүдрийн жагсаалт.
-    </c-table.caption>
-    <c-table.header>
-        <c-table.row>
-            <c-table.head class='w-[100px]'>block</c-table.head>
-            <c-table.head>mixed ratio</c-table.head>
-            <c-table.head>auto pu</c-table.head>
-            <c-table.head class='text-right'>off to dump ore</c-table.head>
-            <c-table.head class='text-right'>reamaining field</c-table.head>
-            <c-table.head class='text-right'>ore moisture</c-table.head>
-            <c-table.head class='text-right'>action</c-table.head>
-        </c-table.row>
-    </c-table.header>
-      <c-table.body>
-        {%for el in data%}
-          <c-table.row>
-              <c-table.cell class='font-medium'>{{el.block_number}}</c-table.cell>
-              <c-table.cell>{{el.mixed_ratio}}</c-table.cell>
-              <c-table.cell class='text-right'>{{el.auto_pu_total_ore}}</c-table.cell>
-              <c-table.cell class='text-right'>{{el.off_to_dump_ore}}</c-table.cell>
-              <c-table.cell class='text-right'>{{el.ore_moisture}}</c-table.cell>
-              <c-table.cell class='text-right'>{{el.field_remaining}}</c-table.cell>
-              <c-table.cell class='text-right'>
-                <div class="flex justify-end gap-1 ">
-                  <c-button variant="ghost"  aria-label="View">
-                    <span >View</span>
-                  </c-button>
+{% extends "layout/_default.html" %} {% block content %}
+    <section class="flex flex-col container mx-auto">
+        <div class="p-6">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-foreground">Dashboard Overview</h1>
+                <p class="text-muted-foreground mt-2">
+                    Welcome back! Here's what's happening with your projects today.
+                </p>
+            </div>
+            <c-card class="w-full">
+                <c-card.header>
+                    <c-card.title>Ore factory registration</c-card.title>
+                    <c-card.description>Crud table</c-card.description>
+                </c-card.header>
+                <c-card.content>
+                    <c-table>
+                        <c-table.caption>
+                            Үйлдвэр тэжээсэн хүдрийн жагсаалт.
+                        </c-table.caption>
+                        <c-table.header>
+                            <c-table.row>
+                                <c-table.head class='w-[100px]'>block</c-table.head>
+                                <c-table.head>mixed ratio</c-table.head>
+                                <c-table.head>auto pu</c-table.head>
+                                <c-table.head class='text-right'>off to dump ore</c-table.head>
+                                <c-table.head class='text-right'>reamaining field</c-table.head>
+                                <c-table.head class='text-right'>ore moisture</c-table.head>
+                                <c-table.head class='text-right'>action</c-table.head>
+                            </c-table.row>
+                        </c-table.header>
+                        <c-table.body>
+                            {% for el in data %}
+                                <c-table.row>
+                                    <c-table.cell class='font-medium'>{{ el.block_number }}</c-table.cell>
+                                    <c-table.cell>{{ el.mixed_ratio }}</c-table.cell>
+                                    <c-table.cell class='text-right'>{{ el.auto_pu_total_ore }}</c-table.cell>
+                                    <c-table.cell class='text-right'>{{ el.off_to_dump_ore }}</c-table.cell>
+                                    <c-table.cell class='text-right'>{{ el.ore_moisture }}</c-table.cell>
+                                    <c-table.cell class='text-right'>{{ el.field_remaining }}</c-table.cell>
+                                    <c-table.cell class='text-right'>
+                                        <div class="flex justify-end gap-1 ">
+                                            <c-button variant="ghost" aria-label="View">
+                                                <span>View</span>
+                                            </c-button>
 
-                  <c-alink variant="ghost" aria-label="Edit" href="{% url 'registrations:editOreFactory' pk=el.pk %}">
-                    <span>Edit</span>
-                  </c-alink>
+                                            <c-alink variant="ghost" aria-label="Edit"
+                                                     href="{% url 'registrations:editOreFactory' pk=el.pk %}">
+                                                <span>Edit</span>
+                                            </c-alink>
 
-                  <c-alink variant="ghost" aria-label="Delete" href="{% url 'registrations:deleteOreFactory' pk=el.pk %}">
-                    <span>Delete</span>
-                  </c-alink>
-              </c-table.cell>
-          </c-table.row>
-        {%endfor%}
-      </c-table.body>
-    </c-table>
+                                            <c-alink variant="ghost" aria-label="Delete"
+                                                     href="{% url 'registrations:deleteOreFactory' pk=el.pk %}">
+                                                <span>Delete</span>
+                                            </c-alink>
+                                    </c-table.cell>
+                                </c-table.row>
+                            {% endfor %}
+                        </c-table.body>
+                    </c-table>
 
-    <c-alink href="{% url "registrations:createOreFactory" %}">Add row</c-alink>
+                    <c-alink class="mt-3" href="{% url "registrations:createOreFactory" %}">Add row</c-alink>
 
-        </c-card.content>
-
-      </c-card>
-  </div>
-</section>
-{%endblock%}
+                </c-card.content>
+            </c-card>
+    </section>
+{% endblock %}
